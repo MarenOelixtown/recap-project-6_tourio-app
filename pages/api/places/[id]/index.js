@@ -21,4 +21,9 @@ export default async function handler(request, response) {
 
     response.status(200).json(place);
   }
+  if (request.method === "PATCH") {
+    const updatedPlace = request.body;
+    await Product.findByIdAndUpdate(id, updatedPlace);
+    return response.status(200).json({ status: "Place successfully updated." });
+  }
 }
